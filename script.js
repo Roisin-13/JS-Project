@@ -7,17 +7,13 @@ function fetchEmployeeData() {
             let output = "<h2>List of employees</h2>";
             output += "<ul>";
             employees.forEach(function (employees) {
-                output += `
-                <li>
-                ${employees.name}
-                </li>
-                <li>
-                    ${employees.username}
-                </li>
-                <li>
-                    ${employees.company.name}
-                </li>`;
-                output += "</>";
+                let table = document.getElementById("tableBody");
+                let row = `<tr>
+                    <td>${employees.name}</td>
+                     <td> ${employees.username}</td>
+                     <td>${employees.company.name}</td>
+                    </tr>`
+                table.innerHTML += row
                 document.getElementById("response").innerHTML = output;
 
             })
