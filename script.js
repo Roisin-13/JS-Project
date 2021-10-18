@@ -44,5 +44,13 @@ function addEmployee(e) {
         body: JSON.stringify(myPost)
     })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then(data => {
+            let table = document.getElementById("tableBody");
+            let outputADD = document.createElement("tr");
+            let text = `<td>${data.name}</td>
+                     <td> ${data.user}</td>
+                     <td>${data.company}</td>`;
+            outputADD.innerHTML += text;
+            table.appendChild(outputADD);
+        })
 }
