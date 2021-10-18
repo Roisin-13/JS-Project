@@ -2,8 +2,8 @@
 document.getElementById("getEmployeeDataBtn").addEventListener("click", fetchEmployeeData);
 //--get listener for add
 document.getElementById("addEmployeeForm").addEventListener("submit", addEmployee);
-
-
+//--get listener for delete
+document.getElementById("deleteEmployeeForm").addEventListener("submit", deleteEmployee);
 
 //======================show employee================//
 function fetchEmployeeData() {
@@ -56,4 +56,37 @@ function addEmployee(e) {
             document.getElementById("company").value = "";
         })
 }
+//==========delete employee===============//
+function deleteEmployee(e) {
+    e.preventDefault();
+    //let id = 1;
+    fetch(`https://jsonplaceholder.typicode.com/users/` + "id: 1", {
+        method: "delete"
+    })
+        .then((data) => {
+            console.log(`Request succeeded with JSON response ${data}`)
+            let output = "";
+            //employees.forEach(function (employees) {
+            let table = document.getElementById("tableBody");
+            let row = `<tr>
+                    <td>${data.name}</td>
+                     <td> ${data.username}</td>
+                     <td>${data.company}</td>
+                    </tr>`
+            table.innerHTML += row
+            document.getElementById("response").innerHTML = output;
 
+            // })
+
+
+
+
+
+
+
+
+
+
+        })
+
+}
