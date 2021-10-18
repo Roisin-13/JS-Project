@@ -10,8 +10,7 @@ function fetchEmployeeData() {
     fetch("https://jsonplaceholder.typicode.com/users/")
         .then(response => response.json())
         .then(employees => {
-            let output = "<h2>List of employees</h2>";
-            output += "<ul>";
+            let output = "";
             employees.forEach(function (employees) {
                 let table = document.getElementById("tableBody");
                 let row = `<tr>
@@ -52,5 +51,9 @@ function addEmployee(e) {
                      <td>${data.company}</td>`;
             outputADD.innerHTML += text;
             table.appendChild(outputADD);
+            document.getElementById("name").value = "";
+            document.getElementById("userName").value = "";
+            document.getElementById("company").value = "";
         })
 }
+
