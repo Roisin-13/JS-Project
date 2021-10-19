@@ -1,5 +1,5 @@
 //--get listener for show
-document.getElementById("getEmployeeDataBtn").addEventListener("click", fetchEmployeeData);
+//document.getElementById("getEmployeeDataBtn").addEventListener("click", fetchEmployeeData);
 //--get listener for add
 document.getElementById("addEmployeeForm").addEventListener("submit", addEmployee);
 //--get listener for delete
@@ -7,7 +7,7 @@ document.getElementById("deleteEmployeeForm").addEventListener("submit", deleteE
 
 //======================show employee================//
 function fetchEmployeeData() {
-    fetch("https://jsonplaceholder.typicode.com/users/")
+    fetch("https://jsonplaceholder.typicode.com/users")
         .then(response => response.json())
         .then(employees => {
             let output = "";
@@ -24,6 +24,7 @@ function fetchEmployeeData() {
             })
         })
 }
+fetchEmployeeData();
 //==========add employee===============//
 function addEmployee(e) {
     e.preventDefault();
@@ -35,8 +36,8 @@ function addEmployee(e) {
         user: user,
         company: company
     }
-    fetch("https://jsonplaceholder.typicode.com/users/", {
-        method: 'POST',
+    fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "post",
         headers: {
             "Content-Type": "application/json"
         },
@@ -59,34 +60,31 @@ function addEmployee(e) {
 //==========delete employee===============//
 function deleteEmployee(e) {
     e.preventDefault();
-    //let id = 1;
-    fetch(`https://jsonplaceholder.typicode.com/users/` + "id: 1", {
+    document.getElementById("EmployeeID").required = true;
+    let inputID = document.getElementById("EmployeeID").value;
+    let id = toString(inputID);
+    fetch(`https://jsonplaceholder.typicode.com/users/username=${id}`, {
         method: "delete"
     })
         .then((data) => {
             console.log(`Request succeeded with JSON response ${data}`)
-            let output = "";
-            //employees.forEach(function (employees) {
-            let table = document.getElementById("tableBody");
-            let row = `<tr>
-                    <td>${data.name}</td>
-                     <td> ${data.username}</td>
-                     <td>${data.company}</td>
-                    </tr>`
-            table.innerHTML += row
-            document.getElementById("response").innerHTML = output;
+            //     let output = "";
+            //     //employees.forEach(function (employees) {
+            //     let table = document.getElementById("tableBody");
+            //     let row = `<tr>
+            //             <td>${data.name}</td>
+            //              <td> ${data.username}</td>
+            //              <td>${data.company}</td>
+            //             </tr>`
+            //     table.innerHTML += row
+            //     document.getElementById("response").innerHTML = output;
 
-            // })
-
-
-
-
+        }).catch((error) => {
+            console.log(`not deleted with JSON response ${error}`)
+        });
 
 
 
 
-
-
-        })
 
 }
