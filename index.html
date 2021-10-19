@@ -17,9 +17,11 @@
     <div id="response"></div>
     <h2>List of employees</h2>
     <table class="tableResponse">
-        <th>Name</th>
-        <th>User Name</th>
-        <th>Company Name</th>
+        <th>NI number</th>
+        <th>Fullname</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Department</th>
 
         <tbody id="tableBody"></tbody>
     </table>
@@ -28,13 +30,19 @@
     <form id="addEmployeeForm">
         <h2>Add Employee</h2>
         <div>
-            <input type="text" id="name" placeholder="name">
+            <input type="text" id="ninumber" placeholder="NI number">
         </div>
         <div>
-            <input type="text" id="userName" placeholder="user name">
+            <input type="text" id="fullname" placeholder="full name">
         </div>
         <div>
-            <input type="text" id="company" placeholder="company">
+            <input type="text" id="address" placeholder="Address">
+        </div>
+        <div>
+            <input type="text" id="phone" placeholder="Phone">
+        </div>
+        <div>
+            <input type="text" id="department" placeholder="Department">
         </div>
         <input type="submit" value="submit">
     </form>
