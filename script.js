@@ -144,9 +144,9 @@ function addEmployee(e) {
 
 function deleteEmployee(e) {
     e.preventDefault();
-    //let inputID = document.getElementById("delID").value;
+    let inputID = document.getElementById("delID").value;
     //let ID = parseInt(inputID);
-    // let NI = `${inputID}`
+    let NI = `${inputID.toUpperCase()}`
     // index = -1;
     // var index = employeeJSON.findIndex(function (item, i) {
     //     if (item.ninumber === NI) {
@@ -156,8 +156,9 @@ function deleteEmployee(e) {
 
     // });
     //let i = -1;
-    let NI = "OB043941D"
-    var findNI = employeeJSON.find(function (item, i) {
+    //let NI = "OB043941D"
+    // - - -Mozilla all HAIL!!!!!!
+    let findNI = employeeJSON.find(function (item, i) {
         if (item.ninumber === NI) {
             index = i;
             return i;
@@ -171,7 +172,7 @@ function deleteEmployee(e) {
     //console.log(i);
     console.log(employeeJSON);
 
-    employeeJSON.splice(`${ID}`, 1);
+    employeeJSON.splice(`${index}`, 1);
     let table = document.getElementById("tableBody");
     table.innerHTML = "";
 
