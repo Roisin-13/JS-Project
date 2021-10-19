@@ -144,9 +144,31 @@ function addEmployee(e) {
 
 function deleteEmployee(e) {
     e.preventDefault();
-    let inputID = document.getElementById("delID")
-    let ID = parseInt(inputID);
+    //let inputID = document.getElementById("delID").value;
+    //let ID = parseInt(inputID);
+    // let NI = `${inputID}`
+    // index = -1;
+    // var index = employeeJSON.findIndex(function (item, i) {
+    //     if (item.ninumber === NI) {
+    //         index = i;
+    //         return i;
+    //     }
 
+    // });
+    //let i = -1;
+    let NI = "OB043941D"
+    var findNI = employeeJSON.find(function (item, i) {
+        if (item.ninumber === NI) {
+            index = i;
+            return i;
+        }
+    });
+
+    console.log(index);
+
+
+
+    //console.log(i);
     console.log(employeeJSON);
 
     employeeJSON.splice(`${ID}`, 1);
