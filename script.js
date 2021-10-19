@@ -68,24 +68,36 @@ let employeeJSON =
 //document.getElementById("getEmployeeDataBtn").addEventListener("click", fetchEmployeeData);
 //--get listener for add
 document.getElementById("addEmployeeForm").addEventListener("submit", addEmployee);
-
-
+//--get listener for delete
+document.getElementById("deleteEmployeeForm").addEventListener("submit", deleteEmployee);
 
 //======================show employee================//
 function fetchEmployeeData(array) {
-    let output = "";
-    array.forEach(function (array) {
-        let table = document.getElementById("tableBody");
+    //let output = "";
+    let table = document.getElementById("tableBody");
+    //let output = document.createElement("tr");
+    // array.forEach(function (array) {
+    //     let table = document.getElementById("tableBody");
+    //     let row = `<tr>
+    //     <td>${array.ninumber}</td>
+    //                 <td>${array.fullname}</td>
+    //                  <td> ${array.phone}</td>
+    //                  <td>${array.address}</td>
+    //                  <td>${array.department}</td>
+    //                 </tr>`
+    //     table.innerHTML += row
+    //     document.getElementById("response").innerHTML = output;
+    for (let i = 0; i < array.length; i++) {
         let row = `<tr>
-        <td>${array.ninumber}</td>
-                    <td>${array.fullname}</td>
-                     <td> ${array.phone}</td>
-                     <td>${array.address}</td>
-                     <td>${array.department}</td>
+                    <td>${array[i].ninumber}</td>
+                    <td>${array[i].fullname}</td>
+                     <td> ${array[i].phone}</td>
+                     <td>${array[i].address}</td>
+                     <td>${array[i].department}</td>
                     </tr>`
-        table.innerHTML += row
-        document.getElementById("response").innerHTML = output;
-    })
+        table.innerHTML += row;
+        //document.getElementById("response").innerHTML = output;
+    }
 
 }
 fetchEmployeeData(employeeJSON);
@@ -107,22 +119,42 @@ function addEmployee(e) {
     console.log(myPost);
     employeeJSON.push(myPost);
     console.log(employeeJSON);
+    // let table = document.getElementById("tableBody");
+    // let outputADD = document.createElement("tr");
+    // let text = `<tr>
+    //                 <td>${myPost.ninumber}</td>
+    //                 <td>${myPost.fullname}</td>
+    //                  <td> ${myPost.phone}</td>
+    //                  <td>${myPost.address}</td>
+    //                  <td>${myPost.department}</td>
+    //                 </tr >`
+    // outputADD.innerHTML += text;
+    // table.appendChild(outputADD);
+    //let output = "";
     let table = document.getElementById("tableBody");
-    let outputADD = document.createElement("tr");
-    let text = `<tr>
-                    <td>${myPost.ninumber}</td>
-                    <td>${myPost.fullname}</td>
-                     <td> ${myPost.phone}</td>
-                     <td>${myPost.address}</td>
-                     <td>${myPost.department}</td>
-                    </tr >`
-    outputADD.innerHTML += text;
-    table.appendChild(outputADD);
+    table.innerHTML = "";
+    fetchEmployeeData(employeeJSON);
     document.getElementById("ninumber").value = "";
     document.getElementById("fullname").value = "";
     document.getElementById("address").value = "";
     document.getElementById("phone").value = "";
     document.getElementById("department").value = "";
 }
+//==========delete employee===============//
 
+function deleteEmployee(e) {
+    e.preventDefault();
+    let inputID = document.getElementById("delID")
+    let ID = parseInt(inputID);
 
+    console.log(employeeJSON);
+
+    employeeJSON.splice(`${ID}`, 1);
+    let table = document.getElementById("tableBody");
+    table.innerHTML = "";
+
+    console.log(employeeJSON);
+
+    fetchEmployeeData(employeeJSON);
+    document.getElementById("delID").value = "";
+}
