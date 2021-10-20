@@ -70,23 +70,16 @@ let employeeJSON =
 document.getElementById("addEmployeeForm").addEventListener("submit", addEmployee);
 //--get listener for delete
 document.getElementById("deleteEmployeeForm").addEventListener("submit", deleteEmployee);
+//--get listener for update
+document.getElementById("updateEmployeeForm").addEventListener("submit", updateEmployee);
+//--get listener for edit
+document.getElementById("editEmployeeForm").addEventListener("submit", editEmployee);
 
 //======================show employee================//
 function fetchEmployeeData(array) {
-    //let output = "";
+
     let table = document.getElementById("tableBody");
-    //let output = document.createElement("tr");
-    // array.forEach(function (array) {
-    //     let table = document.getElementById("tableBody");
-    //     let row = `<tr>
-    //     <td>${array.ninumber}</td>
-    //                 <td>${array.fullname}</td>
-    //                  <td> ${array.phone}</td>
-    //                  <td>${array.address}</td>
-    //                  <td>${array.department}</td>
-    //                 </tr>`
-    //     table.innerHTML += row
-    //     document.getElementById("response").innerHTML = output;
+
     for (let i = 0; i < array.length; i++) {
         let row = `<tr>
                     <td>${array[i].ninumber}</td>
@@ -96,11 +89,12 @@ function fetchEmployeeData(array) {
                      <td>${array[i].department}</td>
                     </tr>`
         table.innerHTML += row;
-        //document.getElementById("response").innerHTML = output;
+
     }
 
 }
 fetchEmployeeData(employeeJSON);
+
 //==========add employee===============//
 function addEmployee(e) {
     e.preventDefault();
@@ -116,21 +110,8 @@ function addEmployee(e) {
         phone: phone,
         department: department
     }
-    console.log(myPost);
     employeeJSON.push(myPost);
-    console.log(employeeJSON);
-    // let table = document.getElementById("tableBody");
-    // let outputADD = document.createElement("tr");
-    // let text = `<tr>
-    //                 <td>${myPost.ninumber}</td>
-    //                 <td>${myPost.fullname}</td>
-    //                  <td> ${myPost.phone}</td>
-    //                  <td>${myPost.address}</td>
-    //                  <td>${myPost.department}</td>
-    //                 </tr >`
-    // outputADD.innerHTML += text;
-    // table.appendChild(outputADD);
-    //let output = "";
+
     let table = document.getElementById("tableBody");
     table.innerHTML = "";
     fetchEmployeeData(employeeJSON);
@@ -139,39 +120,29 @@ function addEmployee(e) {
     document.getElementById("address").value = "";
     document.getElementById("phone").value = "";
     document.getElementById("department").value = "";
-}
-//==========delete employee===============//
 
+    //---remove later  vvvv
+    console.log(myPost);
+    console.log(employeeJSON);
+
+
+}
+
+//==========delete employee===============//
 function deleteEmployee(e) {
     e.preventDefault();
     let inputID = document.getElementById("delID").value;
-    //let ID = parseInt(inputID);
-    let NI = `${inputID.toUpperCase()}`
-    // index = -1;
-    // var index = employeeJSON.findIndex(function (item, i) {
-    //     if (item.ninumber === NI) {
-    //         index = i;
-    //         return i;
-    //     }
 
-    // });
-    //let i = -1;
-    //let NI = "OB043941D"
-    // - - -Mozilla all HAIL!!!!!!
+    let NI = `${inputID.toUpperCase()}`
+
     let findNI = employeeJSON.find(function (item, i) {
         if (item.ninumber === NI) {
             index = i;
             return i;
         }
     });
-
     console.log(index);
-
-
-
-    //console.log(i);
     console.log(employeeJSON);
-
     employeeJSON.splice(`${index}`, 1);
     let table = document.getElementById("tableBody");
     table.innerHTML = "";
@@ -180,4 +151,82 @@ function deleteEmployee(e) {
 
     fetchEmployeeData(employeeJSON);
     document.getElementById("delID").value = "";
+}
+
+//==========update employee===============//
+function updateEmployee(e) {
+    //------see if you can make match work??????
+    // e.preventDefault();
+    // let inputName = document.getElementById("updateID").value;
+
+    // let name = `${inputName}`
+    // //let found = employeeJSON.match(name);
+
+    // let findName = employeeJSON.includes(function (item, i) {
+    //     if (item === name) {
+    //         index = i;
+    //         return i;
+    //     }
+    // });
+
+    // //---remove later  vvvv
+    // console.log(i);
+    // console.log(employeeJSON);
+    e.preventDefault();
+    let inputID = document.getElementById("updateID").value;
+
+    let NI = `${inputID.toUpperCase()}`
+
+    let findNI = employeeJSON.find(function (item, i) {
+        if (item.ninumber === NI) {
+            index = i;
+            return i;
+        }
+    });
+
+    console.log(index);
+    console.log(employeeJSON[index]);
+    document.getElementById("ninumber1").value = employeeJSON[index].ninumber;
+    document.getElementById("fullname1").value = employeeJSON[index].fullname;
+    document.getElementById("address1").value = employeeJSON[index].address;
+    document.getElementById("phone1").value = employeeJSON[index].phone;
+    document.getElementById("department1").value = employeeJSON[index].department;
+
+    employeeJSON.splice(`${index}`, 1);
+    let table = document.getElementById("tableBody");
+    table.innerHTML = "";
+
+    console.log(employeeJSON);
+
+    fetchEmployeeData(employeeJSON);
+
+}
+//---part of update (edit)
+function editEmployee(e) {
+    e.preventDefault();
+    let ninumber1 = document.getElementById("ninumber1").value;
+    let fullname1 = document.getElementById("fullname1").value;
+    let address1 = document.getElementById("address1").value;
+    let phone1 = document.getElementById("phone1").value;
+    let department1 = document.getElementById("department1").value;
+    const myPostEdit = {
+        ninumber: ninumber1,
+        fullname: fullname1,
+        address: address1,
+        phone: phone1,
+        department: department1
+    }
+    employeeJSON.push(myPostEdit);
+
+    let table = document.getElementById("tableBody");
+    table.innerHTML = "";
+    fetchEmployeeData(employeeJSON);
+    document.getElementById("ninumber1").value = "";
+    document.getElementById("fullname1").value = "";
+    document.getElementById("address1").value = "";
+    document.getElementById("phone1").value = "";
+    document.getElementById("department1").value = "";
+
+    document.getElementById("updateID").value = "";
+
 }
