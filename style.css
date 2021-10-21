@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+/*----------------header----------------------*/
+#companyTagline{
+    display: flex;
+    background-color: white;
+    color: #4a0099;
+    margin-bottom: 15px;
+}
+h1{
+    padding-top: 25px;
+  font-family:  "Josefin Sans:wght@400", sans-serif;  
+}
+#logo{
+    padding-right: 20px;
+    height: 100px;
+}
+/*----------------page background----------------------*/
+
+body{
+    background-color: #f2e6ff;
+}
+/*----------------table----------------------*/
+.tableResponse {
+    width: 95%;
+    margin: auto;
+    font-family:  "Josefin Sans:wght@300", sans-serif;
+    font-size: medium;
+}
+.tableResponse tr:nth-child(even)
+{
+    background-color: #d7b3ff;
+}
+.tableResponse th {
+    font-family:  "Josefin Sans:wght@400", sans-serif;
+    font-size: large;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    background-color: #4a0099;
+     color: white;
+}
+/*----------------forms----------------------*/
+.allForms {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    
+}
+h2{
+    font-family:  "Josefin Sans:wght@400", sans-serif;
+    font-size: large; 
+    color: #4a0099;
+    padding-top: 20px;
+}
+h3{
+    font-family:  "Josefin Sans:wght@400", sans-serif;
+    font-size: medium; 
+    color: #4a0099;
+    padding: 10px;
+}
+input[type=text] {
+    padding: 10px ;
+    margin: 5px ;
+    box-sizing: border-box;
+    border: 2px solid #4a0099;
+    border-radius: 5px;
+    font-family:  "Josefin Sans:wght@300", sans-serif;
+    font-size: medium;
+    color: #4a0099;
+}
+input[type=submit] {
+    padding: 10px ;
+    margin: 5px ;
+    box-sizing: border-box;
+    background-color: #4a0099;
+    border-radius: 5px;
+    border: none;
+    font-family:  "Josefin Sans:wght@400", sans-serif;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
