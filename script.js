@@ -66,14 +66,6 @@ let employeeJSON =
 
 //--get listener for show
 //document.getElementById("getEmployeeDataBtn").addEventListener("click", fetchEmployeeData);
-//--get listener for add
-document.getElementById("addEmployeeForm").addEventListener("submit", addEmployee);
-//--get listener for delete
-document.getElementById("deleteEmployeeForm").addEventListener("submit", deleteEmployee);
-//--get listener for update
-document.getElementById("updateEmployeeForm").addEventListener("submit", updateEmployee);
-//--get listener for edit
-document.getElementById("editEmployeeForm").addEventListener("submit", editEmployee);
 
 //======================show employee================//
 function fetchEmployeeData(array) {
@@ -95,6 +87,8 @@ function fetchEmployeeData(array) {
 }
 fetchEmployeeData(employeeJSON);
 
+//--get listener for add
+document.getElementById("addEmployeeForm").addEventListener("submit", addEmployee);
 //==========add employee===============//
 function addEmployee(e) {
     e.preventDefault();
@@ -102,7 +96,7 @@ function addEmployee(e) {
     let fullname = document.getElementById("fullname").value;
     let address = document.getElementById("address").value;
     let phone = document.getElementById("phone").value;
-    let department = document.getElementById("department").value;
+    let department = document.getElementById("choseDep").value;
     const myPost = {
         ninumber: ninumber,
         fullname: fullname,
@@ -119,15 +113,12 @@ function addEmployee(e) {
     document.getElementById("fullname").value = "";
     document.getElementById("address").value = "";
     document.getElementById("phone").value = "";
-    document.getElementById("department").value = "";
-
-    //---remove later  vvvv
-    console.log(myPost);
-    console.log(employeeJSON);
-
+    document.getElementById("choseDep").value = "Department";
 
 }
 
+//--get listener for delete
+document.getElementById("deleteEmployeeForm").addEventListener("submit", deleteEmployee);
 //==========delete employee===============//
 function deleteEmployee(e) {
     e.preventDefault();
@@ -153,25 +144,12 @@ function deleteEmployee(e) {
     document.getElementById("delID").value = "";
 }
 
+//--get listener for update
+document.getElementById("updateEmployeeForm").addEventListener("submit", updateEmployee);
+//--get listener for edit
+document.getElementById("editEmployeeForm").addEventListener("submit", editEmployee);
 //==========update employee===============//
 function updateEmployee(e) {
-    //------see if you can make match work??????
-    // e.preventDefault();
-    // let inputName = document.getElementById("updateID").value;
-
-    // let name = `${inputName}`
-    // //let found = employeeJSON.match(name);
-
-    // let findName = employeeJSON.includes(function (item, i) {
-    //     if (item === name) {
-    //         index = i;
-    //         return i;
-    //     }
-    // });
-
-    // //---remove later  vvvv
-    // console.log(i);
-    // console.log(employeeJSON);
     e.preventDefault();
     let inputID = document.getElementById("updateID").value;
 
@@ -190,7 +168,7 @@ function updateEmployee(e) {
     document.getElementById("fullname1").value = employeeJSON[index].fullname;
     document.getElementById("address1").value = employeeJSON[index].address;
     document.getElementById("phone1").value = employeeJSON[index].phone;
-    document.getElementById("department1").value = employeeJSON[index].department;
+    document.getElementById("choseDep1").value = employeeJSON[index].department;
 
     employeeJSON.splice(`${index}`, 1);
     let table = document.getElementById("tableBody");
@@ -208,7 +186,7 @@ function editEmployee(e) {
     let fullname1 = document.getElementById("fullname1").value;
     let address1 = document.getElementById("address1").value;
     let phone1 = document.getElementById("phone1").value;
-    let department1 = document.getElementById("department1").value;
+    let department1 = document.getElementById("choseDep1").value;
     const myPostEdit = {
         ninumber: ninumber1,
         fullname: fullname1,
@@ -225,8 +203,56 @@ function editEmployee(e) {
     document.getElementById("fullname1").value = "";
     document.getElementById("address1").value = "";
     document.getElementById("phone1").value = "";
-    document.getElementById("department1").value = "";
+    document.getElementById("choseDep1").value = "Department";
 
     document.getElementById("updateID").value = "";
 
+}
+
+
+//--get listener for filter
+document.getElementById("filterDep").addEventListener("change", filterDep)
+//==========filter employee===============//
+function filterDep() {
+
+    let dropdown, table, rows, cells, department, filter;
+    dropdown = document.getElementById("filterDep");
+    table = document.getElementById("tableBody");
+    rows = table.getElementsByTagName("tr");
+    filter = dropdown.value;
+
+    for (let item of rows) {
+        cells = item.getElementsByTagName("td");
+        department = cells[4] || null;
+
+        if (filter === "All" || !department || (filter === department.textContent)) {
+            item.style.display = "";
+        }
+        else {
+            item.style.display = "none";
+        }
+    }
+}
+//--get listener for filter
+document.getElementById("inputName").addEventListener("keyup", filterName);
+//==========filter employee===============//
+function filterName() {
+
+    let input, filter, table, tr, td, searchName;
+    input = document.getElementById("inputName");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("tableBody");
+    tr = table.getElementsByTagName("tr");
+
+    for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            searchName = td.textContent || td.innerText;
+            if (searchName.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }

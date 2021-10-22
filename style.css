@@ -65,7 +65,7 @@ h3{
     color: #4a0099;
     padding: 10px;
 }
-input[type=text] {
+input[type=text], input[type=tel]{
     padding: 10px ;
     margin: 5px ;
     box-sizing: border-box;
@@ -73,7 +73,16 @@ input[type=text] {
     border-radius: 5px;
     font-family:  "Josefin Sans:wght@300", sans-serif;
     font-size: medium;
-    color: #4a0099;
+}
+#choseDep, #choseDep1 {
+    padding: 10px ;
+    margin: 5px ;
+    box-sizing: border-box;
+    border: 2px solid #4a0099;
+    border-radius: 5px;
+    font-family:  "Josefin Sans:wght@300", sans-serif;
+    font-size: medium;
+    color: lightslategray;
 }
 input[type=submit] {
     padding: 10px ;
@@ -86,4 +95,11 @@ input[type=submit] {
     color: white;
     font-size: medium;
     cursor: pointer;
+}
+#filterDep {
+    font-family:  "Josefin Sans:wght@300", sans-serif;
+    font-size: medium;
+    color: #4a0099;
+    border-radius: 5px;
+    background-color: #f2e6ff;
 }
