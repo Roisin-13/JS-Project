@@ -44,7 +44,7 @@ Be as creative as you'd like with the design of the application.
 
 ### * Possible improvements for the future
 •	Responsive web design.  
-•	Using .appendchildnode to add HTMl from JSON array - as if this website went live, would be a security risk.  
+•	Using .appendchildnode to add HTML from JSON array - as if this website went live, would be a security risk.  
 
 ### * Notable Mentions (i.e. anyone that may have helped/produced valuable input to your project)
 QA front-End tutors: Ashwene Sivaraj, Edsel Tham, and Cameron Guthrie.
