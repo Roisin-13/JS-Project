@@ -1,7 +1,7 @@
 # **JS-Project**
 
 ## Hosted on github environment: https://roisin-13.github.io/JS-Project/ (please use to check functionality).  
-### to use please fork, and clone down to personal device - no other downloads needed.
+## To use please fork, and clone down to personal device - no other downloads needed.
 
 ##	* Project Overview
 You are tasked with creating a HR application which contains employee information, you must capture the following data:  
