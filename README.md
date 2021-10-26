@@ -1,5 +1,8 @@
 # **JS-Project**
 
+## Hosted on github environment: https://roisin-13.github.io/JS-Project/ (please use to check functionality).  
+### to use please fork, and clone down to personal device - no other downloads needed.
+
 ##	* Project Overview
 You are tasked with creating a HR application which contains employee information, you must capture the following data:  
 •	Employee's NI Number  
@@ -45,7 +48,7 @@ Be as creative as you'd like with the design of the application.
 
 ### * Notable Mentions (i.e. anyone that may have helped/produced valuable input to your project)
 QA front-End tutors: Ashwene Sivaraj, Edsel Tham, and Cameron Guthrie.
-Mozilla - MDN Web Docs
-CSS tricks
-W3.Schools
+Mozilla - MDN Web Docs.  
+CSS tricks.  
+W3.Schools.  
 
