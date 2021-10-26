@@ -64,8 +64,7 @@ let employeeJSON =
     ]
 
 
-//--get listener for show
-//document.getElementById("getEmployeeDataBtn").addEventListener("click", fetchEmployeeData);
+
 
 //======================show employee================//
 function fetchEmployeeData(array) {
@@ -98,7 +97,7 @@ function addEmployee(e) {
     let phone = document.getElementById("phone").value;
     let department = document.getElementById("choseDep").value;
     const myPost = {
-        ninumber: ninumber,
+        ninumber: ninumber.toUpperCase(),
         fullname: fullname,
         address: address,
         phone: phone,
@@ -132,16 +131,17 @@ function deleteEmployee(e) {
             return i;
         }
     });
-    console.log(index);
-    console.log(employeeJSON);
-    employeeJSON.splice(`${index}`, 1);
     let table = document.getElementById("tableBody");
-    table.innerHTML = "";
-
-    console.log(employeeJSON);
-
-    fetchEmployeeData(employeeJSON);
-    document.getElementById("delID").value = "";
+    if (confirm("Do you want to delete employee " + `${employeeJSON[index].fullname}`)) {
+        employeeJSON.splice(`${index}`, 1);
+        table.innerHTML = "";
+        fetchEmployeeData(employeeJSON);
+        document.getElementById("delID").value = "";
+    } else {
+        table.innerHTML = "";
+        fetchEmployeeData(employeeJSON);
+        document.getElementById("delID").value = "";
+    }
 }
 
 //--get listener for update
@@ -162,7 +162,6 @@ function updateEmployee(e) {
         }
     });
 
-    console.log(index);
     console.log(employeeJSON[index]);
     document.getElementById("ninumber1").value = employeeJSON[index].ninumber;
     document.getElementById("fullname1").value = employeeJSON[index].fullname;
@@ -173,8 +172,6 @@ function updateEmployee(e) {
     employeeJSON.splice(`${index}`, 1);
     let table = document.getElementById("tableBody");
     table.innerHTML = "";
-
-    console.log(employeeJSON);
 
     fetchEmployeeData(employeeJSON);
 
@@ -188,7 +185,7 @@ function editEmployee(e) {
     let phone1 = document.getElementById("phone1").value;
     let department1 = document.getElementById("choseDep1").value;
     const myPostEdit = {
-        ninumber: ninumber1,
+        ninumber: ninumber1.toUpperCase(),
         fullname: fullname1,
         address: address1,
         phone: phone1,
@@ -214,16 +211,14 @@ function editEmployee(e) {
 document.getElementById("filterDep").addEventListener("change", filterDep)
 //==========filter employee===============//
 function filterDep() {
-
-    let dropdown, table, rows, cells, department, filter;
-    dropdown = document.getElementById("filterDep");
-    table = document.getElementById("tableBody");
-    rows = table.getElementsByTagName("tr");
-    filter = dropdown.value;
+    let dropdown = document.getElementById("filterDep");
+    let table = document.getElementById("tableBody");
+    let rows = table.getElementsByTagName("tr");
+    let filter = dropdown.value;
 
     for (let item of rows) {
-        cells = item.getElementsByTagName("td");
-        department = cells[4] || null;
+        let depCells = item.getElementsByTagName("td");
+        let department = depCells[4] || null;
 
         if (filter === "All" || !department || (filter === department.textContent)) {
             item.style.display = "";
@@ -233,25 +228,25 @@ function filterDep() {
         }
     }
 }
+
+
 //--get listener for filter
 document.getElementById("inputName").addEventListener("keyup", filterName);
 //==========filter employee===============//
 function filterName() {
+    let input = document.getElementById("inputName");
+    let table = document.getElementById("tableBody");
+    let rows = table.getElementsByTagName("tr");
+    let filter = input.value.toUpperCase();
 
-    let input, filter, table, tr, td, searchName;
-    input = document.getElementById("inputName");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("tableBody");
-    tr = table.getElementsByTagName("tr");
-
-    for (let i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
-        if (td) {
-            searchName = td.textContent || td.innerText;
+    for (let i = 0; i < rows.length; i++) {
+        let nameCells = rows[i].getElementsByTagName("td")[1];
+        if (nameCells) {
+            let searchName = nameCells.textContent || nameCells.innerText;
             if (searchName.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
+                rows[i].style.display = "";
             } else {
-                tr[i].style.display = "none";
+                rows[i].style.display = "none";
             }
         }
     }
