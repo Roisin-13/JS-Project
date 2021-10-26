@@ -47,7 +47,7 @@ Be as creative as you'd like with the design of the application.
 •	Using .appendchildnode to add HTML from JSON array - as if this website went live, would be a security risk.  
 
 ### * Notable Mentions (i.e. anyone that may have helped/produced valuable input to your project)
-QA front-End tutors: Ashwene Sivaraj, Edsel Tham, and Cameron Guthrie.
+QA front-End tutors: Ashwene Sivaraj, Edsel Tham, and Cameron Guthrie.  
 Mozilla - MDN Web Docs.  
 CSS tricks.  
 W3.Schools.  
