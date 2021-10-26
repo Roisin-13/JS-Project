@@ -23,13 +23,29 @@ Be as creative as you'd like with the design of the application.
 
 
 ### * Why are we doing this project?
+•	To use JavaScript functions for manipulation of the DOM.  
+•	To use event listeners to link Javascript functions with HTML webpage.  
+•	To explore functions that allow manipulation of arrays in particular a JSON object.  
 
 ### * How I expected the challenge to go
+•	I expect to enjoy this challenge, and I did.  
+•	I expected I would not know some of the functions, and would have to research them.  
 
 ### * What went well?
+•	Fetch and Edit employees went well, as it was all covered in API on the course, and the functions only needed slight tweeking to fit purpose.  
+•	Styling and HTML layout went as planned.  
 
 ### * What did not go as planned?
+•	Update, and filter employees needed a bit of research - but documentation was available.  
+•	Append child node did not work at all - had to use .innerHTML, which I know is a security risk.  
 
 ### * Possible improvements for the future
+•	Responsive web design.  
+•	Using .appendchildnode to add HTMl from JSON array - as if this website went live, would be a security risk.  
 
 ### * Notable Mentions (i.e. anyone that may have helped/produced valuable input to your project)
+QA front-End tutors: Ashwene Sivaraj, Edsel Tham, and Cameron Guthrie.
+Mozilla - MDN Web Docs
+CSS tricks
+W3.Schools
+
